@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "brand_infos",
+  "info": {
+    "singularName": "brand-info",
+    "pluralName": "brand-infos",
+    "displayName": "Brand_Info"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "short_intro": {
+      "type": "string"
+    },
+    "story": {
+      "type": "text"
+    },
+    "mission": {
+      "type": "text"
+    },
+    "values": {
+      "type": "json"
+    },
+    "logo_url": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "review": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::review.review",
+      "inversedBy": "brand_infos"
+    }
+  }
+}

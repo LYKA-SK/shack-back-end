@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer_name": {
+      "type": "text"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "text",
+      "required": true
+    },
+    "date": {
+      "type": "datetime",
+      "required": true,
+      "unique": true
+    },
+    "brand_infos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand-info.brand-info",
+      "mappedBy": "review"
+    }
+  }
+}
