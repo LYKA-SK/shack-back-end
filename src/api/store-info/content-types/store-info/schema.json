@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "store_infos",
+  "info": {
+    "singularName": "store-info",
+    "pluralName": "store-infos",
+    "displayName": "store-info"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "map_embed_url": {
+      "type": "text"
+    },
+    "opening_hours": {
+      "type": "json"
+    },
+    "main_photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -46,6 +46,12 @@
       "relation": "manyToOne",
       "target": "api::review.review",
       "inversedBy": "brand_infos"
+    },
+    "image_urls": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::image-url.image-url",
+      "mappedBy": "product"
     }
   }
 }
