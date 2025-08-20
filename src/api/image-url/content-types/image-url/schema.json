@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "image_urls",
+  "info": {
+    "singularName": "image-url",
+    "pluralName": "image-urls",
+    "displayName": "image_url"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image_url": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "brand_info": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand-info.brand-info",
+      "inversedBy": "image_urls"
+    }
+  }
+}
