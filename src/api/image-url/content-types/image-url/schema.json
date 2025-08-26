@@ -21,12 +21,6 @@
         "videos",
         "audios"
       ]
-    },
-    "brand_info": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::brand-info.brand-info",
-      "inversedBy": "image_urls"
     }
   }
 }

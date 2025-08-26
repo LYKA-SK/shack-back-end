@@ -25,12 +25,6 @@
       "type": "datetime",
       "required": true,
       "unique": true
-    },
-    "brand_infos": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::brand-info.brand-info",
-      "mappedBy": "review"
     }
   }
 }

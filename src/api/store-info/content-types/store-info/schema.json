@@ -11,13 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "address": {
-      "type": "string",
-      "required": true
-    },
-    "map_embed_url": {
-      "type": "string"
-    },
     "opening_hours": {
       "type": "json"
     },

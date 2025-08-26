@@ -410,7 +410,7 @@ export interface ApiACategoryACategory extends Struct.CollectionTypeSchema {
 export interface ApiBrandInfoBrandInfo extends Struct.CollectionTypeSchema {
   collectionName: 'brand_infos';
   info: {
-    displayName: 'Brand_Info';
+    displayName: 'Our Story & Mission';
     pluralName: 'brand-infos';
     singularName: 'brand-info';
   };
@@ -421,10 +421,6 @@ export interface ApiBrandInfoBrandInfo extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image_urls: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::image-url.image-url'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -432,49 +428,11 @@ export interface ApiBrandInfoBrandInfo extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     logo_url: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    mission: Schema.Attribute.Text;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
-    review: Schema.Attribute.Relation<'manyToOne', 'api::review.review'>;
-    short_intro: Schema.Attribute.String;
     story: Schema.Attribute.Text;
-    tagline: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    values: Schema.Attribute.JSON;
-  };
-}
-
-export interface ApiContactMessageContactMessage
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'contact_messages';
-  info: {
-    displayName: 'Contact_message';
-    pluralName: 'contact-messages';
-    singularName: 'contact-message';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    first_name: Schema.Attribute.String & Schema.Attribute.Required;
-    last_name: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact-message.contact-message'
-    > &
-      Schema.Attribute.Private;
-    message: Schema.Attribute.Text & Schema.Attribute.Required;
-    phone_number: Schema.Attribute.BigInteger & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -492,10 +450,6 @@ export interface ApiImageUrlImageUrl extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    brand_info: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::brand-info.brand-info'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -599,10 +553,6 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    brand_infos: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::brand-info.brand-info'
-    >;
     comment: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -636,7 +586,6 @@ export interface ApiStoreInfoStoreInfo extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    address: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -649,7 +598,6 @@ export interface ApiStoreInfoStoreInfo extends Struct.CollectionTypeSchema {
     main_photo_url: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    map_embed_url: Schema.Attribute.String;
     opening_hours: Schema.Attribute.JSON;
     photos: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -1173,7 +1121,6 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::a-category.a-category': ApiACategoryACategory;
       'api::brand-info.brand-info': ApiBrandInfoBrandInfo;
-      'api::contact-message.contact-message': ApiContactMessageContactMessage;
       'api::image-url.image-url': ApiImageUrlImageUrl;
       'api::partner.partner': ApiPartnerPartner;
       'api::product.product': ApiProductProduct;

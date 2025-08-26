@@ -4,7 +4,7 @@
   "info": {
     "singularName": "brand-info",
     "pluralName": "brand-infos",
-    "displayName": "Brand_Info"
+    "displayName": "Our Story & Mission"
   },
   "options": {
     "draftAndPublish": true
@@ -16,20 +16,8 @@
       "required": true,
       "unique": true
     },
-    "tagline": {
-      "type": "string"
-    },
-    "short_intro": {
-      "type": "string"
-    },
     "story": {
       "type": "text"
-    },
-    "mission": {
-      "type": "text"
-    },
-    "values": {
-      "type": "json"
     },
     "logo_url": {
       "type": "media",
@@ -40,18 +28,6 @@
         "videos",
         "audios"
       ]
-    },
-    "review": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::review.review",
-      "inversedBy": "brand_infos"
-    },
-    "image_urls": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::image-url.image-url",
-      "mappedBy": "brand_info"
     }
   }
 }
