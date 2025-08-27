@@ -439,6 +439,39 @@ export interface ApiBrandInfoBrandInfo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactMessageContactMessage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_messages';
+  info: {
+    displayName: 'Contact_message';
+    pluralName: 'contact-messages';
+    singularName: 'contact-message';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    first_name: Schema.Attribute.String & Schema.Attribute.Required;
+    last_name: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-message.contact-message'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text & Schema.Attribute.Required;
+    phone_number: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiImageUrlImageUrl extends Struct.CollectionTypeSchema {
   collectionName: 'image_urls';
   info: {
@@ -553,6 +586,10 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    brand_infos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::brand-info.brand-info'
+    >;
     comment: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -561,6 +598,8 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     date: Schema.Attribute.DateTime &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    img_url: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1121,6 +1160,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::a-category.a-category': ApiACategoryACategory;
       'api::brand-info.brand-info': ApiBrandInfoBrandInfo;
+      'api::contact-message.contact-message': ApiContactMessageContactMessage;
       'api::image-url.image-url': ApiImageUrlImageUrl;
       'api::partner.partner': ApiPartnerPartner;
       'api::product.product': ApiProductProduct;
